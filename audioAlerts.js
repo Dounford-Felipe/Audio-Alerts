@@ -59,7 +59,7 @@ function addAlert() {
 				<button onclick="removeAlert(this.parentNode.parentNode)">Delete</button>
 			</td>`
 	document.getElementById('alertsBody').append(alertRow)
-	alerts[totalAlerts] = {type:'lt',variableName:'',wantedValue:'',soundType:'audio',sound:'https://github.com/Dounford-Felipe/DHM-Audio-Alerts/raw/main/ding.wav',enabled:false,triggered:false}
+	alerts[totalAlerts] = {type:'lt',variableName:'',wantedValue:'',soundType:'audio',sound:'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav',enabled:false,triggered:false}
 }
 
 //Remove alert row and the array key, also changes the id of the remaining rows
@@ -82,7 +82,7 @@ function saveAlerts() {
 		alerts[i].variableName = alertRows[i].getElementsByTagName('input')[0].value
 		alerts[i].wantedValue = alertRows[i].getElementsByTagName('input')[1].value
 		alerts[i].soundType = alertRows[i].getElementsByTagName('select')[1].value
-		alerts[i].sound = alertRows[i].getElementsByTagName('input')[2].value == '' ? 'https://github.com/Dounford-Felipe/DHM-Audio-Alerts/raw/main/ding.wav' : alertRows[i].getElementsByTagName('input')[2].value
+		alerts[i].sound = alertRows[i].getElementsByTagName('input')[2].value == '' ? 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' : alertRows[i].getElementsByTagName('input')[2].value
 		alerts[i].enabled = alertRows[i].getElementsByTagName("input")[3].checked
 	}
 	let key = `audioAlerts-${username}`;
@@ -106,7 +106,7 @@ function loadAlerts() {
 			alertRows[i].getElementsByTagName('input')[1].value = audioAlerts[i].wantedValue
 			alertRows[i].getElementsByTagName('select')[1].value = audioAlerts[i].soundType
 			alertRows[i].getElementsByTagName('input')[3].checked = audioAlerts[i].enabled
-			alertRows[i].getElementsByTagName('input')[2].value = audioAlerts[i].sound == 'https://github.com/Dounford-Felipe/DHM-Audio-Alerts/raw/main/ding.wav' ? '' : audioAlerts[i].sound;
+			alertRows[i].getElementsByTagName('input')[2].value = audioAlerts[i].sound == 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' ? '' : audioAlerts[i].sound;
 		}
 		alerts = audioAlerts;
 	} else {addAlert()}
@@ -158,7 +158,7 @@ function alertLoop() {
 				alerts[i].triggered = true
 				if(alerts[i].soundType == "audio") {
 					let sound = new Audio(alerts[i].sound)
-					sound = isNaN(sound.duration) ? new Audio("https://github.com/Dounford-Felipe/DHM-Audio-Alerts/raw/main/ding.wav") : sound
+					sound = isNaN(sound.duration) ? new Audio("https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav") : sound
 					sound.volume = alertVolume / 100
 					sound.play()
 				} else {
