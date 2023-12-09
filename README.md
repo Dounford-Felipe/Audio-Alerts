@@ -11,7 +11,7 @@ This is a simple web-based system for managing audio alerts. It allows users to 
 
 ## Table Screenshot
 
-[!Example Alerts](https://i.imgur.com/gLUw5xV.png)
+[<img src="https://i.imgur.com/gLUw5xV.png>]
 
 The screenshot above illustrates the structure of the alert configuration table.
 
@@ -25,7 +25,8 @@ The screenshot above illustrates the structure of the alert configuration table.
 
 2. **Add CSS and add it to any page you want**
 
-This does not come with any style, you will need to add CSS as needed
+This does not come with any style, you will need to add CSS as needed.
+After styling the table you can add it to any page, everything loads automatically.
 
 ## Dependencies
 This system relies on the capabilities of modern web browsers and utilizes HTML, CSS, and JavaScript.
@@ -34,6 +35,7 @@ The codebase is well-commented for clarity and ease of understanding. Each major
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests to enhance the functionality, fix bugs, or improve documentation.
+You can contact dounford#0 on Discord if you need any help.
 
 ## License
 This project is licensed under the MIT License.
