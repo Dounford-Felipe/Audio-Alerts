@@ -21,7 +21,8 @@ The screenshot above illustrates the structure of the alert configuration table.
 
    ```bash
    git clone https://github.com/Dounford-Felipe/Audio-Alerts.git
-   cd Audio-Alerts```
+   cd Audio-Alerts
+   ```
 
 2. **Add CSS and add it to any page you want**
 
