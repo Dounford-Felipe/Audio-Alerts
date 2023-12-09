@@ -11,7 +11,7 @@ This is a simple web-based system for managing audio alerts. It allows users to 
 
 ## Table Screenshot
 
-[<img src="https://i.imgur.com/gLUw5xV.png>](https://i.imgur.com/gLUw5xV.png)
+[![Example Alerts](https://i.imgur.com/gLUw5xV.png)](https://i.imgur.com/gLUw5xV.png)
 
 The screenshot above illustrates the structure of the alert configuration table.
 
