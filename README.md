@@ -24,6 +24,7 @@ The screenshot above illustrates the structure of the alert configuration table.
    cd Audio-Alerts```
 
 2. **Add CSS and add it to any page you want**
+
 This does not come with any style, you will need to add CSS as needed
 
 ## Dependencies
