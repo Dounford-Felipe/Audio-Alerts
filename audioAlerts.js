@@ -1,5 +1,4 @@
 let alerts = [];
-let username = 'felipewolf';
 let muteAll = false;
 let alertVolume = 1;
 let voices = [];
@@ -85,7 +84,7 @@ function saveAlerts() {
 		alerts[i].sound = alertRows[i].getElementsByTagName('input')[2].value == '' ? 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' : alertRows[i].getElementsByTagName('input')[2].value
 		alerts[i].enabled = alertRows[i].getElementsByTagName("input")[3].checked
 	}
-	let key = `audioAlerts-${username}`;
+	let key = `audioAlerts`;
 	localStorage.setItem(key, JSON.stringify(alerts));
 	localStorage.setItem('audioAlertsVolume', alertVolume);
 	let voiceIndex = document.getElementById('ttsVoices').value
@@ -94,7 +93,7 @@ function saveAlerts() {
 
 //Loads both volume and alerts from the localStorage
 function loadAlerts() {
-	let key = `audioAlerts-${username}`;
+	let key = `audioAlerts`;
 	let audioAlerts = localStorage.getItem(key);
 	if (audioAlerts) {
 		audioAlerts = JSON.parse(audioAlerts);
