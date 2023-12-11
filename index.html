@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Audio Alerts</title>
+<script src="audioAlerts.js"></script>
+</head>
+<body>
+<table border="1" cellpadding="1" cellspacing="1">
+	<thead>
+		<tr>
+			<th scope="col">Variable</th>
+			<th colspan="2" rowspan="1" scope="col">Trigger</th>
+			<th scope="col">Current Value</th>
+			<th scope="col" style="width: 96px;">Sound Type</th>
+			<th scope="col" style="width: 111px;">Option</th>
+			<th scope="col" style="width: 64px;">Enabled</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody id="alertsBody">
+	</tbody>
+	<tfoot>
+		<tr id="alertsFooter">
+			<td>
+				<select id="ttsVoices" onchange="voice = voices[this.value]" style="width:100%"></select>
+			</td>
+			<td colspan="3">
+				<input type="checkbox" onclick="muteAll = !muteAll">Mute ALL
+			</td>
+			<td colspan="2">
+			<input type="range" min="1" max="100" value="100" id="alertVolume" onchange="alertVolume = this.value"> Volume
+			</td>
+			<td>
+				<button onclick="saveAlerts()">Save</button>
+			</td>
+			<td>
+				<button onclick="addAlert()">ADD</button>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+</body>
+</html>
