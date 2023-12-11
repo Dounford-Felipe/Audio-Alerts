@@ -8,6 +8,13 @@ let alertVolume = 1;
 let voices = [];
 let voice;
 
+/*If you want to REMOVE EVAL remove lines 60, 182, 183 and 184 or you can search and remove the lines:
+Only!)
+"eval")
+let command
+eval(
+*/
+
 //Gets the tts voices, populate the select with them and set the current voice
 function getVoices() {
 	voices = speechSynthesis.getVoices();
@@ -30,7 +37,7 @@ function addAlert() {
 	let alertRow = document.createElement('tr')
 	alertRow.id = `alert${totalAlerts+1}`
 	alertRow.innerHTML = `<td>
-				<input placeholder="Variable Name" id="variableName${totalAlerts+1}">
+				<input placeholder="Variable Name" id="variableName${totalAlerts+1}" style="width:100%">
 			</td>
 			<td>
 				<select id="variableType${totalAlerts+1}">
@@ -50,6 +57,7 @@ function addAlert() {
 				<select id="audioType${totalAlerts+1}">
 					<option value="audio" selected="">Audio File</option>
 					<option value="tts">Text To Speech</option>
+					<option value="eval">Eval (Advanced Users Only!)</option>
 				</select>
 			</td>
 			<td>
@@ -165,12 +173,15 @@ function alertLoop() {
 						sound = isNaN(sound.duration) ? new Audio(ding) : sound
 						sound.volume = alertVolume / 100
 						sound.play()
-					} else {
+					} else if (alerts[i].soundType == "tts") {
 						const message = new SpeechSynthesisUtterance();
 						message.text = alerts[i].sound == ding ? defaultText : alerts[i].sound
 						message.voice = voice
 						message.volume = alertVolume / 100
 						window.speechSynthesis.speak(message);
+					} else if (alerts[i].soundType == "eval") {// Remove from here
+						let command = alerts[i].sound == 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' ? `console.log('You need to set ' + alerts[i].variableName + ' command')` : alerts[i].sound
+						eval(command) // To here if you don't want eval
 					}
 				}
 			} 
