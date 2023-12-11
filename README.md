@@ -31,8 +31,7 @@ After styling the table you can add it to any page, everything loads automatical
 
 ## Dependencies
 This system relies on the capabilities of modern web browsers and utilizes HTML, CSS, and JavaScript.
-Documentation
-The codebase is well-commented for clarity and ease of understanding. Each major function and section has comments explaining its purpose and functionality.
+The code is well-commented for clarity and ease of understanding. Each major function and section has comments explaining its purpose and functionality.
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests to enhance the functionality, fix bugs, or improve documentation.
