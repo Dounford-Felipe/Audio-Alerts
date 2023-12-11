@@ -1,3 +1,7 @@
+//Change ding url to set default sound
+let ding = 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav'
+//Change defaultText to set default TTS Text
+let defaultText = 'Ready'
 let alerts = [];
 let muteAll = false;
 let alertVolume = 1;
@@ -58,7 +62,7 @@ function addAlert() {
 				<button onclick="removeAlert(this.parentNode.parentNode)">Delete</button>
 			</td>`
 	document.getElementById('alertsBody').append(alertRow)
-	alerts[totalAlerts] = {type:'lt',variableName:'',wantedValue:'',soundType:'audio',sound:'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav',enabled:false,triggered:false}
+	alerts[totalAlerts] = {type:'lt',variableName:'',wantedValue:'',soundType:'audio',sound:ding,enabled:false,triggered:false}
 }
 
 //Remove alert row and the array key, also changes the id of the remaining rows
@@ -81,7 +85,7 @@ function saveAlerts() {
 		alerts[i].variableName = alertRows[i].getElementsByTagName('input')[0].value
 		alerts[i].wantedValue = alertRows[i].getElementsByTagName('input')[1].value
 		alerts[i].soundType = alertRows[i].getElementsByTagName('select')[1].value
-		alerts[i].sound = alertRows[i].getElementsByTagName('input')[2].value == '' ? 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' : alertRows[i].getElementsByTagName('input')[2].value
+		alerts[i].sound = alertRows[i].getElementsByTagName('input')[2].value == '' ? ding : alertRows[i].getElementsByTagName('input')[2].value
 		alerts[i].enabled = alertRows[i].getElementsByTagName("input")[3].checked
 	}
 	let key = `audioAlerts`;
@@ -105,7 +109,7 @@ function loadAlerts() {
 			alertRows[i].getElementsByTagName('input')[1].value = audioAlerts[i].wantedValue
 			alertRows[i].getElementsByTagName('select')[1].value = audioAlerts[i].soundType
 			alertRows[i].getElementsByTagName('input')[3].checked = audioAlerts[i].enabled
-			alertRows[i].getElementsByTagName('input')[2].value = audioAlerts[i].sound == 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' ? '' : audioAlerts[i].sound;
+			alertRows[i].getElementsByTagName('input')[2].value = audioAlerts[i].sound == ding ? '' : audioAlerts[i].sound;
 		}
 		alerts = audioAlerts;
 	} else {addAlert()}
@@ -149,23 +153,25 @@ function alertLoop() {
 					break;
 				}
 				case "ne": {
-					triggered =  window[alerts[i].variableName] != alerts[i].wantedValue ? 1 : 0
+					triggered =  window[alerts[i].variableName] != alerts[i].wantedValue && typeof window[alerts[i].variableName] != 'undefined' ? 1 : 0
 					break;
 				}
 			}
 			if (triggered == 1 && alerts[i].triggered == false) {
 				alerts[i].triggered = true
-				if(alerts[i].soundType == "audio") {
-					let sound = new Audio(alerts[i].sound)
-					sound = isNaN(sound.duration) ? new Audio("https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav") : sound
-					sound.volume = alertVolume / 100
-					sound.play()
-				} else {
-					const message = new SpeechSynthesisUtterance();
-					message.text = alerts[i].sound == 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' ? 'Ready' : alerts[i].sound
-					message.voice = voice
-					message.volume = alertVolume / 100
-					window.speechSynthesis.speak(message);
+				if (muteAll != true) {
+					if(alerts[i].soundType == "audio") {
+						let sound = new Audio(alerts[i].sound)
+						sound = isNaN(sound.duration) ? new Audio(ding) : sound
+						sound.volume = alertVolume / 100
+						sound.play()
+					} else {
+						const message = new SpeechSynthesisUtterance();
+						message.text = alerts[i].sound == ding ? defaultText : alerts[i].sound
+						message.voice = voice
+						message.volume = alertVolume / 100
+						window.speechSynthesis.speak(message);
+					}
 				}
 			} 
 			if (triggered == 0) {
@@ -178,7 +184,7 @@ function alertLoop() {
 //Loop every second the alert function and the function that displays the current value of functions
 const alertLoopInterval = setInterval(function(){
 	newValue()
-    if (muteAll != true) {alertLoop()}
+    alertLoop()
 }, 1000);
 
 //Loads the alerts when the page is loaded
