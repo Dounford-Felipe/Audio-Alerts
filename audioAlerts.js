@@ -163,7 +163,7 @@ function alertLoop() {
 					sound.play()
 				} else {
 					const message = new SpeechSynthesisUtterance();
-					message.text = alerts[i].sound
+					message.text = alerts[i].sound == 'https://raw.githubusercontent.com/Dounford-Felipe/Audio-Alerts/main/ding.wav' ? 'Ready' : alerts[i].sound
 					message.voice = voice
 					message.volume = alertVolume / 100
 					window.speechSynthesis.speak(message);
