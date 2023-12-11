@@ -9,11 +9,13 @@ This is a simple web-based system for managing audio alerts. It allows users to 
 - Customize alert settings such as volume and sound type.
 - Save and load alert configurations from localStorage.
 
-## Table Screenshot
+## Showcase
 
 [![Example Alerts](https://i.imgur.com/SysvVpD.png)](https://i.imgur.com/SysvVpD.png)
 
 The screenshot above illustrates the structure of the alert configuration table.
+
+**You can find a working example here: https://dounford-felipe.github.io/Audio-Alerts/**
 
 ## Getting Started
 
