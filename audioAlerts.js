@@ -50,7 +50,7 @@ function addAlert() {
 				</select>
 			</td>
 			<td>
-				<input placeholder="Value to Trigger" type="number" id="wantedValue${totalAlerts+1}">
+				<input placeholder="Value to Trigger" id="wantedValue${totalAlerts+1}">
 			</td>
 			<td><span id="variableValue"></span></td>
 			<td>
